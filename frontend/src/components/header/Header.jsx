@@ -193,7 +193,15 @@ const Header = ({type}) => {
                 )}
               </div>
               <div className="headerSearchItem">
-                <button className="headerBtn" onClick={handleSearch}>
+                <button
+                  disabled={destination === "" ? true : false}
+                  className="headerBtn"
+                  onClick={handleSearch}
+                  style={{
+                    cursor: destination === "" ? "not-allowed" : "pointer",
+                    backgroundColor: destination === "" ? "#b4bdff" : "#0b20b7",
+                  }}
+                >
                   Search
                 </button>
               </div>
