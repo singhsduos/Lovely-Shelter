@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 5%;
 }
 
 .fLists {
@@ -25,6 +26,5 @@
 }
 
 .fText {
-color: #003580;
+  color: #003580;
 }
-

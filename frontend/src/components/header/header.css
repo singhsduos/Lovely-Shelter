@@ -4,24 +4,31 @@
   display: flex;
   justify-content: center;
   position: relative;
+  margin-bottom: 20px;
 }
 
 .headerContainer {
   width: 100%;
-  max-width: 1024px;
   margin: 20px 0px 100px 0px;
+  padding: 2%;
+}
+
+.headerContainer.listmode {
+  margin: 20px 0px 0px 0px;
 }
 
 .headerList {
   display: flex;
-  gap: 40px;
+  gap: 8%;
   margin-bottom: 50px;
+  flex-wrap: wrap;
 }
 
 .headerListItem {
   display: flex;
   align-items: center;
   gap: 10px;
+  margin: 1%;
 }
 
 .headerListItem.active {
@@ -56,8 +63,11 @@
   border-radius: 5px;
   position: absolute;
   bottom: -25px;
-  width: 100%;
-  max-width: 1024px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 95%;
 }
 
 .headerSearchItem {
@@ -77,8 +87,9 @@
 }
 
 .date {
-    position: absolute;
-    top: 50px;
+  position: absolute;
+  top: 50px;
+  z-index: 2;
 }
 
 .options {
