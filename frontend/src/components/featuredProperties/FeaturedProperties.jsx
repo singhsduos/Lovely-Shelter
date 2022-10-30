@@ -4,7 +4,6 @@ import React from 'react'
 
 const FeaturedProperties = () => {
   const { data, loading, error } = useFetch("/api/hotels?featured=true&limit=4");
-  console.log(data);
   return (
     <div className="fp">
   {loading ? (
