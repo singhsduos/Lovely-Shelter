@@ -1,4 +1,3 @@
-import React, { useContext, useState } from "react";
 import {
   faBed,
   faCalendarDays,
@@ -9,46 +8,51 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { DateRange } from "react-date-range";
+import { useContext, useState } from "react";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
+import { SearchContext } from "../../context/SearchContext";
+import { AuthContext } from "../../context/AuthContext";
 import "./header.css";
 
-const Header = ({type}) => {
-      const [destination, setDestination] = useState("");
-      const [openDate, setOpenDate] = useState(false);
-      const [dates, setDates] = useState([
-        {
-          startDate: new Date(),
-          endDate: new Date(),
-          key: "selection",
-        },
-      ]);
-      
-    const [openOptions, setOpenOptions] = useState(false);
-    
-    const [options, setOptions] = useState({
-        adult: 1,
-        children: 0,
-        room: 1,
-      });
-    
-      const handleOption = (name, operation) => {
-        setOptions((prev) => {
-          return {
-            ...prev,
-            [name]: operation === "i" ? options[name] + 1 : options[name] - 1,
-          };
-        });
-      };
-  
-    const navigate = useNavigate();
+const Header = ({ type }) => {
+  const [destination, setDestination] = useState("");
+  const [openDate, setOpenDate] = useState(false);
+  const [dates, setDates] = useState([
+    {
+      startDate: new Date(),
+      endDate: new Date(),
+      key: "selection",
+    },
+  ]);
+  const [openOptions, setOpenOptions] = useState(false);
+  const [options, setOptions] = useState({
+    adult: 1,
+    children: 0,
+    room: 1,
+  });
 
-    const handleSearch = () => {
-      navigate("/hotels", { state: { destination, dates, options } });
-    };
-    
+  const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
+
+  const handleOption = (name, operation) => {
+    setOptions((prev) => {
+      return {
+        ...prev,
+        [name]: operation === "i" ? options[name] + 1 : options[name] - 1,
+      };
+    });
+  };
+
+  const { dispatch } = useContext(SearchContext);
+
+  const handleSearch = () => {
+    dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
+    navigate("/hotels", { state: { destination, dates, options } });
+  };
+
   return (
     <div className="header">
       <div
@@ -87,7 +91,7 @@ const Header = ({type}) => {
               Get rewarded for your travels – unlock instant savings of 10% or
               more with a free Lovely Shelter account
             </p>
-            {<button className="headerBtn">Sign in / Register</button>}
+            {!user && <button className="headerBtn">Sign in / Register</button>}
             <div className="headerSearch">
               <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faBed} className="headerIcon" />
@@ -211,6 +215,6 @@ const Header = ({type}) => {
       </div>
     </div>
   );
-}
+};
 
 export default Header;
