@@ -59,7 +59,7 @@ const List = () => {
                   onChange={(item) => setDates([item.selection])}
                   moveRangeOnFirstSelection={false}
                   ranges={dates}
-                  className="date"
+                  className="listCalendar"
                   minDate={new Date()}
                 />
               )}
