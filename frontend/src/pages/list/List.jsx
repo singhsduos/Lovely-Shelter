@@ -17,8 +17,10 @@ const List = () => {
   const [min, setMin] = useState(undefined);
   const [max, setMax] = useState(undefined);
 
-  const { data, loading, error} = useFetch(
-    `/api/hotels?city=${destination.toLowerCase()}&min=${min || 0}&max=${max || 999}`
+  const { data, loading, error } = useFetch(
+    `/api/hotels?requestcity=${destination.toLowerCase()}&min=${min || 0}&max=${
+      max || 999
+    }`
   );
 
 

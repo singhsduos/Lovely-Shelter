@@ -1,12 +1,12 @@
-import "./featuredProperties.css";
 import useFetch from "../../hooks/useFetch";
-import React from 'react'
+import "./featuredProperties.css";
 
 const FeaturedProperties = () => {
   const { data, loading, error } = useFetch("/api/hotels?featured=true&limit=4");
+
   return (
     <div className="fp">
-  {loading ? (
+      {loading ? (
         "Loading"
       ) : (
         <>
@@ -27,9 +27,9 @@ const FeaturedProperties = () => {
             </div>
           ))}
         </>
-      )}  
+      )}
     </div>
   );
-}
+};
 
 export default FeaturedProperties;

@@ -44,24 +44,23 @@ export const getHotel = async (req, res, next) => {
 };
 
 export const getHotels = async (req, res, next) => {
-  //query for featured properties
-  const {city, min, max, ...others } = req.query;
+  const { min, max, requestcity, ...others } = req.query;
   try {
     const hotels = await Hotel.find({
       ...others,
-      city: { $regex: "^" + city, $options: "i" },
+      city: { $regex: "^" + (requestcity || ""), $options: "i"},
       cheapestPrice: { $gte: min || 1, $lte: max || 999 },
-    }).sort({ cheapestPrice : 1 });
+    }).sort({ cheapestPrice: 1 }).limit(req.query.limit);
     res.status(200).json(hotels);
   } catch (err) {
     next(err);
   }
 };
 
+
+
 export const countByCity = async (req, res, next) => {
-  //transforming query into array form
-  const cities = req.query.cities.toLowerCase().split(",");
-  console.log(cities);
+  const cities = req.query.cities.split(",");
   try {
     const list = await Promise.all(
       cities.map((city) => {
@@ -97,7 +96,6 @@ export const countByType = async (req, res, next) => {
 export const getHotelRooms = async (req, res, next) => {
   try {
     const hotel = await Hotel.findById(req.params.id);
-    //because of multiple room we use Promise all
     const list = await Promise.all(
       hotel.rooms.map((room) => {
         return Room.findById(room);
