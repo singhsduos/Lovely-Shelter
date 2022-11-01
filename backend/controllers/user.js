@@ -12,7 +12,7 @@ export const updateUser = async (req, res, next) => {
   } catch (err) {
     next(err);
   }
-};
+}; 
 
 //DELETE
 export const deleteUser = async (req, res, next) => {
