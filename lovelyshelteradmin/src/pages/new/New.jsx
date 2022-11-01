@@ -20,7 +20,7 @@ const New = ({ inputs, title }) => {
     data.append("upload_preset", "upload");
     try {
       const uploadRes = await axios.post(
-        "https://api.cloudinary.com/v1_1/lamadev/image/upload",
+        "https://api.cloudinary.com/v1_1/betterkart/image/upload",
         data
       );
 
@@ -31,13 +31,13 @@ const New = ({ inputs, title }) => {
         img: url,
       };
 
-      await axios.post("/auth/register", newUser);
+      await axios.post("/api/auth/register", newUser);
+      window.location.reload();
     } catch (err) {
       console.log(err);
     }
   };
 
-  console.log(info);
   return (
     <div className="new">
       <Sidebar />

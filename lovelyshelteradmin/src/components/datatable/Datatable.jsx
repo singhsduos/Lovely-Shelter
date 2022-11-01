@@ -8,17 +8,17 @@ import axios from "axios";
 const Datatable = ({ columns }) => {
   const location = useLocation();
   const path = location.pathname.split("/")[1];
-  const [list, setList] = useState("");
+  const [list, setList] = useState([]);
   const { data, loading, error } = useFetch(`/api/${path}`);
 
   useEffect(() => {
     setList(data);
   }, [data]);
 
-  console.log(data);
+ 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`/${path}/${id}`);
+      await axios.delete(`/api/${path}/${id}`);
       setList(list.filter((item) => item._id !== id));
     } catch (err) {}
   };

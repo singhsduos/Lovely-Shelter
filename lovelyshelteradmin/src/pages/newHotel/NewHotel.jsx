@@ -12,7 +12,7 @@ const NewHotel = () => {
   const [info, setInfo] = useState({});
   const [rooms, setRooms] = useState([]);
 
-  const { data, loading, error } = useFetch("/rooms");
+  const { data, loading, error } = useFetch("/api/rooms");
 
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
@@ -26,7 +26,7 @@ const NewHotel = () => {
     setRooms(value);
   };
 
-  console.log(files);
+
 
   const handleClick = async (e) => {
     e.preventDefault();
@@ -37,7 +37,7 @@ const NewHotel = () => {
           data.append("file", file);
           data.append("upload_preset", "upload");
           const uploadRes = await axios.post(
-            "https://api.cloudinary.com/v1_1/lamadev/image/upload",
+            "https://api.cloudinary.com/v1_1/betterkart/image/upload",
             data
           );
 
@@ -52,7 +52,8 @@ const NewHotel = () => {
         photos: list,
       };
 
-      await axios.post("/hotels", newhotel);
+      await axios.post("/api/hotels", newhotel);
+      window.location.reload();
     } catch (err) {
       console.log(err);
     }
