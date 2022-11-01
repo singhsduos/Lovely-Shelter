@@ -3,7 +3,7 @@ import "./featured.css";
 
 const Featured = () => {
   const { data, loading, error } = useFetch(
-    "/api/hotels/countByCity?cities=Delhi,Mumbai,Amritsar"
+    "/api/hotels/countByCity?cities=Delhi,Mumbai,London"
   );
   
 
@@ -15,7 +15,7 @@ const Featured = () => {
         <>
           <div className="featuredItem">
             <img
-              src="https://cf.bstatic.com/xdata/images/city/max500/957801.webp?k=a969e39bcd40cdcc21786ba92826063e3cb09bf307bcfeac2aa392b838e9b7a5&o="
+              src="https://delhitourism.gov.in/dttdc/img/new/Swaminarayan.jpg"
               alt=""
               className="featuredImg"
             />
@@ -27,7 +27,7 @@ const Featured = () => {
 
           <div className="featuredItem">
             <img
-              src="https://cf.bstatic.com/xdata/images/city/max500/690334.webp?k=b99df435f06a15a1568ddd5f55d239507c0156985577681ab91274f917af6dbb&o="
+              src="https://www.fabhotels.com/blog/wp-content/uploads/2015/11/diwali-in-mumbai.jpg"
               alt=""
               className="featuredImg"
             />
@@ -38,12 +38,12 @@ const Featured = () => {
           </div>
           <div className="featuredItem">
             <img
-              src="https://cf.bstatic.com/xdata/images/city/max500/689422.webp?k=2595c93e7e067b9ba95f90713f80ba6e5fa88a66e6e55600bd27a5128808fdf2&o="
+              src="https://cdn.londonandpartners.com/-/media/images/london/visit/campaigns/international-recovery-campaign/lets-do-london-related-international-640.jpeg?mw=640&hash=477E6FF9F31F292EE017E5BA63027C7054EB39A0"
               alt=""
               className="featuredImg"
             />
             <div className="featuredTitles">
-              <h1>Amritsar</h1>
+              <h1>London</h1>
               <h2>{data[2]} properties</h2>
             </div>
           </div>
