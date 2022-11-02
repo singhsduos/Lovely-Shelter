@@ -19,6 +19,7 @@ const Login = () => {
   const [isSignUp, setIsSignUp] = useState(false);
 
   const [data, setData] = useState(initialState);
+  const [loginMsg, setLoginMsg] = useState(false);
   const [confirmPass, setConfirmPass] = useState(true);
 
   const navigate = useNavigate();
@@ -27,6 +28,7 @@ const Login = () => {
   const resetForm = () => {
     setData(initialState);
     setConfirmPass(confirmPass);
+    setLoginMsg(false);
     if (error != null) {
       error.message = "";
     }
@@ -64,8 +66,10 @@ const Login = () => {
         "https://lovelyshelter-backend.onrender.com/api/auth/register",
         data
       );
-       dispatch({ type: "REGISTER_SUCCESS" });
-      window.location.reload();
+      dispatch({ type: "REGISTER_SUCCESS" });
+      resetForm();
+      setIsSignUp((prev) => !prev);
+      setLoginMsg(true);
     } catch (err) {
       dispatch({ type: "REGISTER_FAILURE", payload: err.response.data });
     }
@@ -73,7 +77,6 @@ const Login = () => {
 
   return (
     <div className="Auth">
-
       <div className="a-right">
         <form className="infoForm authForm" onSubmit={handleClick}>
           <h3>{isSignUp ? "Register" : "Login"}</h3>
@@ -177,6 +180,17 @@ const Login = () => {
               {error.message}
             </span>
           )}
+          <span
+            style={{
+              color: "red",
+              fontSize: "12px",
+              alignSelf: "flex-end",
+              marginRight: "5px",
+              display: "block",
+            }}
+          >
+            {loginMsg?"Successfully registered, Please login now!":""}
+          </span>
           <div>
             <span
               style={{
