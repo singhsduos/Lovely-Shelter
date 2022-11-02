@@ -73,9 +73,6 @@ const Login = () => {
 
   return (
     <div className="Auth">
-      {/* left side */}
-
-      {/* right form side */}
 
       <div className="a-right">
         <form className="infoForm authForm" onSubmit={handleClick}>
