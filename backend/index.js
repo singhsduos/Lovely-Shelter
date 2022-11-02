@@ -6,7 +6,7 @@ import authRoute from "./routes/auth.js";
 import usersRoute from "./routes/users.js";
 import hotelsRoute from "./routes/hotels.js";
 import roomsRoute from "./routes/rooms.js";
-import path from "path";
+
 
 const app = express();
 
@@ -59,12 +59,7 @@ app.use((err, req, res, next) => {
   });
 });
 
-if (process.env.NODE_ENV == "production") {
-  app.get("/", (req, res) => {
-    app.use(express.static(path.resolve(__dirname, "frontend", "build")));
-    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
-  });
-}
+
 
 app.listen(process.env.PORT, () => {
   connect();
