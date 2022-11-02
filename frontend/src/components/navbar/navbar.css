@@ -1,11 +1,11 @@
-.navbar{
+.navbar {
   height: 50px;
   background-color: #ffd500;
   display: flex;
   justify-content: center;
 }
 
-.navContainer{
+.navContainer {
   width: 100%;
   color: #003580;
   display: flex;
@@ -14,16 +14,22 @@
   padding: 2%;
 }
 
-.logo{
+.logo {
   font-weight: 700;
   font-size: 1.5rem;
 }
 
-.username{
+.username {
   text-transform: capitalize;
 }
 
-.navButton{
+.profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navButton {
   margin-left: 20px;
   border: none;
   padding: 5px 10px;
@@ -32,4 +38,3 @@
   border-radius: 3px;
   outline: none;
 }
-

@@ -2,8 +2,6 @@ import "./navbar.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Navbar = () => {
   const { user } = useContext(AuthContext);
@@ -21,7 +19,7 @@ const Navbar = () => {
           .replace(/^ +/, "")
           .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
       });
-      navigate("/login");
+      navigate("/auth");
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
     }
@@ -34,17 +32,16 @@ const Navbar = () => {
           <span className="logo">Lovely Shelter</span>
         </Link>
         {user ? (
-          <div>
+          <div className="profile">
             <h3 className="username">{user.username}</h3>
-            <span className="navButton" onClick={logOutFunc}>
+            <button className="navButton" onClick={logOutFunc}>
               Logout
-            </span>
+            </button>
           </div>
         ) : (
           <div className="navItems">
-            <button className="navButton">Register</button>
             <Link
-              to="/login"
+              to="/auth"
               style={{ color: "inherit", textDecoration: "none" }}
             >
               <button className="navButton">Login</button>
