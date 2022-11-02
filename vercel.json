@@ -5,7 +5,10 @@
             "use":"@vercel/node"
         }
     ],
-  "redirects": [
-    { "source": "/backend", "destination": "/" }
-  ]
+    "routes":[
+        {
+             "src":"/.*",
+            "dest":"backend/index.js"
+        }
+    ]
 }
