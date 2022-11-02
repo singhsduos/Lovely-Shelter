@@ -3,7 +3,7 @@ import "./featured.css";
 
 const Featured = () => {
   const { data, loading, error } = useFetch(
-    "/api/hotels/countByCity?cities=Delhi,Mumbai,London"
+    "https://lovelyshelter-backend.onrender.com/api/hotels/countByCity?cities=Delhi,Mumbai,London"
   );
   
 

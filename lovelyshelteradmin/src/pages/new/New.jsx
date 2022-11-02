@@ -31,7 +31,10 @@ const New = ({ inputs, title }) => {
         img: url,
       };
 
-      await axios.post("/api/auth/register", newUser);
+      await axios.post(
+        "https://lovelyshelter-backend.onrender.com/api/auth/register",
+        newUser
+      );
       window.location.reload();
     } catch (err) {
       console.log(err);
